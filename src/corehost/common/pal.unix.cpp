@@ -21,6 +21,10 @@
 #include <sys/sysctl.h>
 #endif
 
+#if defined(__ANDROID__)
+#define S_IEXEC S_IXUSR
+#endif
+
 #if defined(__LINUX__)
 #define symlinkEntrypointExecutable "/proc/self/exe"
 #elif !defined(__APPLE__)

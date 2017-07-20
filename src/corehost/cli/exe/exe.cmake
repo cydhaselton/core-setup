@@ -48,7 +48,8 @@ if (WIN32 AND CLI_CMAKE_PLATFORM_ARCH_ARM)
     target_link_libraries(${DOTNET_HOST_EXE_NAME} shell32.lib)
 endif()
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+# Added conditional for Android
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND NOT ${CLR_CMAKE_PLATFORM_ANDROID} MATCHES "Android")
     target_link_libraries (${DOTNET_HOST_EXE_NAME} "dl" "pthread")
 endif()
 
